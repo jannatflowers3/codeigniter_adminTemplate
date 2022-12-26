@@ -37,7 +37,7 @@ class Produtcs extends ResourceController
      */
     public function new()
     {
-        //
+        return view("products/product_list");
     }
 
     /**
@@ -77,6 +77,9 @@ class Produtcs extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $productDelete = new ProdutcModel();
+     $productDelete->delete($id);
+        
+        return redirect()->to("Produtcs");
     }
 }

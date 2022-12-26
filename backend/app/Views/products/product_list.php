@@ -77,6 +77,8 @@
                     <td><?=  $allproduct['product_name']?></td>
                     <td><?=  $allproduct['product_details']?></td>
                     <td><?=  $allproduct['product_price']?></td>
+                    <td>
+                     <a href="produtcs/delete/<?php echo $allproduct['id'] ?>" >Delete</a> </td>
                    
                   </tr>
                   <?php endforeach;?>
