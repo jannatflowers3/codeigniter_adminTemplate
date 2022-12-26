@@ -1,0 +1,41 @@
+\AdminLte Download
+htdocs/full-stack
+
+1. composer create-project codeigniter4/appstarter backend
+4. create database named fullstack project 
+ # database connection with env file #####
+eve k rename kore .eve korte hobe  and CI_ENVIRONMENT = development kore dite hobe 
+
+5. Database connection with env file and envirenment
+6. php spark serve 
+7. php spark make:controller dashboard
+ controller name small letter dileo capital letter niye nebe
+ 8 . Default Controller,Route
+app->confifq->app.php  40no(index.php) remove korbo
+app->confiq->routes.ph = $routes->get('/', 'Dashboard::index');
+controller k $routes->setDefaultController('Dashboard'); kore dite hobe 
+default page hisabe dashboard k dekhabe 
+9. dist ,plugin folder from adminlte copied to public assest
+10. admin template ar index.html1 copied all code and replaced admin_home.php
+11. templating for dashboard.php
+12. Migration for Products = php spark make:migration Produtcs
+ = php spark migrate 
+ = php spark migrate:status
+ = php spark migrate:refresh   = table ar data remove hobe 
+ = php spark migrate:rollback
+refresh dile only tablear data golo remove hobe
+rollback dile all table and table data remove hobe
+
+
+13. Model for ProductModel = php spark make:model ProdutcModel
+14. Controller for Products = php spark make:controller Produtcs --restful
+15 php spark migrate  == php spark migrate:status  == table ar list golo dekha jai
+
+migration kora table list ta migrate kore databse a chole jabe 
+
+
+
+
+php spark
+ diye all command golo dekha jai 
+ 
