@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="/assests/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/assests/dist/css/adminlte.min.css">
+   <!-- summernote -->
+   <link rel="stylesheet" href="/assests/plugins/summernote/summernote-bs4.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

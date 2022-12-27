@@ -16,6 +16,11 @@
 <script src="/assests/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/assests/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/assests/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
+<!-- Summernote -->
+<script src="/assests/plugins/summernote/summernote-bs4.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="/assests/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -25,7 +30,7 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
@@ -37,6 +42,12 @@
       "responsive": true,
     });
   });
+</script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+  })
 </script>
 </body>
 </html>

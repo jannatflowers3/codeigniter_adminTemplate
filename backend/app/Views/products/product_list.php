@@ -7,7 +7,8 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
    <!-- Brand Logo -->
    <a href="index3.html" class="brand-link">
-     <img src="assests/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+     <img src="/assests/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+      class="brand-image img-circle elevation-3" style="opacity: .8">
      <span class="brand-text font-weight-light">AdminLTE 3</span>
    </a>
 
@@ -78,7 +79,8 @@
                     <td><?=  $allproduct['product_details']?></td>
                     <td><?=  $allproduct['product_price']?></td>
                     <td>
-                     <a href="produtcs/delete/<?php echo $allproduct['id'] ?>" >Delete</a> </td>
+                     <a href="produtcs/edit/<?php echo $allproduct['id'] ?>" class="btn btn-success" >Edit</a> 
+                     <a href="produtcs/delete/<?php echo $allproduct['id'] ?>" class="btn btn-primary" >Delete</a> </td>
                    
                   </tr>
                   <?php endforeach;?>

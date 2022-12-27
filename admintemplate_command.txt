@@ -34,6 +34,32 @@ rollback dile all table and table data remove hobe
 migration kora table list ta migrate kore databse a chole jabe 
 
 
+    #########################################################################
+                           Seeder creation 
+  ############seeder creation ##########
+ 1. php spark make:seeder products
+php spark make:seeder productsSeeder
+dammy data create kore
+
+data insert korte  
+ php spark db:seed
+product_price
+
+create page a validation 
+ function __construct()
+    {
+        helper(['form','url']);
+    }
+
+form ar hibbi helper function dorkar 
+ function __construct()
+    {
+        helper(['form','url']);
+    }
+
+
+
+
 
 
 php spark

@@ -10,7 +10,12 @@ class Produtcs extends ResourceController
      * Return an array of resource objects, themselves in array format
      *
      * @return mixed
+     * 
      */
+    function __construct()
+    {
+        helper(['form','url']);
+    }
     public function index()
     {
         $modeldata = new ProdutcModel();
@@ -37,7 +42,7 @@ class Produtcs extends ResourceController
      */
     public function new()
     {
-        return view("products/product_list");
+        return view("products/product_enty");
     }
 
     /**
@@ -47,7 +52,22 @@ class Produtcs extends ResourceController
      */
     public function create()
     {
-        //
+       $validate = $this->validate([
+        'product_name' => 'required|min_length[5]|max_length[20]',
+        'product_details' => 'required|min_length[10]',
+        'product_price' => 'required|numeric',
+        
+       ]);
+       if(!$validate){
+        return view('products/product_enty',['validation' =>$this->validator]);
+       }
+       else{
+        // echo "yes";
+        $model = new ProdutcModel();
+        $data = $this->request->getPost();
+        $model->save($data);
+        return redirect()->to("produtcs");
+       }
     }
 
     /**
