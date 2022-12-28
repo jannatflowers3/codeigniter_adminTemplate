@@ -27,6 +27,25 @@
        <div class="row mb-2">
          <div class="col-sm-6">
            <h1 class="m-0">Dashboard</h1>
+            <a href="/produtcs/new/" class="btn btn-success">Add Product</a>
+           <?php 
+             $error = [];
+                if(session()->has('msg')):?>
+                   <div class="alert alert-success"><?= session()->msg;?></div>
+                 
+          <?php endif ?>
+          <?php 
+             $error = [];
+                if(session()->has('delete')):?>
+                   <div class="alert alert-danger"><?= session()->delete;?></div>
+                 
+          <?php endif ?>
+          <?php 
+             $error = [];
+                if(session()->has('add')):?>
+                   <div class="alert alert-success"><?= session()->add;?></div>
+                 
+          <?php endif ?>
          </div><!-- /.col -->
          <div class="col-sm-6">
            <ol class="breadcrumb float-sm-right">
@@ -79,7 +98,8 @@
                     <td><?=  $allproduct['product_details']?></td>
                     <td><?=  $allproduct['product_price']?></td>
                     <td>
-                     <a href="produtcs/edit/<?php echo $allproduct['id'] ?>" class="btn btn-success" >Edit</a> 
+                     <a href="<?= site_url("produtcs/edit/".$allproduct['id'])?>" class="btn btn-success" >Edit</a> 
+                     <!-- <a href="produtcs/edit/<?php //echo $allproduct['id'] ?>" class="btn btn-success" >Edit</a>  -->
                      <a href="produtcs/delete/<?php echo $allproduct['id'] ?>" class="btn btn-primary" >Delete</a> </td>
                    
                   </tr>

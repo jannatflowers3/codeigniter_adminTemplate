@@ -105,7 +105,7 @@
               <li class="nav-item">
                 <a href="<?php echo  base_url("/produtcs/new/") ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>New Products</p>
+                  <p>Add Products</p>
                 </a>
               </li>
               

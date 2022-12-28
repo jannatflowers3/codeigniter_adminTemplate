@@ -29,22 +29,24 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-10">
-            <h1>Product Entry Form</h1>
+            <h1>Product Edit Form</h1>
+            <?php?>
           </div>
-          <div class="col-sm-10">
+          <?php 
+             $error = [];
+                if(session()->has('myerrors')){
+                   $errors = session('myerrors');
+          } ?>
+          <!-- <div class="col-sm-10">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Product Entry From</li>
+              <li class="breadcrumb-item active">Product Edit From</li>
             </ol>
           </div>
-        </div>
+        </div> -->
       </div><!-- /.container-fluid -->
     </section>
- <?php 
-  if(session()->has('errors')){
-    $errors = session()->errors;
-  }
- ?>
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -58,55 +60,35 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="<?= base_url("produtcs/create")?>">
+              <form method="post" action="<?= base_url("produtcs/update/".$productedit['id'])?>">
                 <div class="card-body">
-                <?php 
-                // if(isset($validation)){
-                //     $errors = $validation->getErrors();
-                //     if(count($errors)>0){
-                //         echo '<ul>';
-                //         foreach ($errors as $error){
-                //             echo "<li>$error</li>";
-                //         }
-                //         echo '</ul>';
-                //     }
-                // }
-                ?>
-
+               
                   <div class="form-group">
                     <label for="pname">Product Name</label>
-                    <input type="text" class="form-control" id="pname" value="<?php echo set_value('product_name');?>" name ="product_name" placeholder="Enter Product Name">
-                    <span class="text-danger"> <?php  
-                      if(isset($errors['product_name'])){
-                      echo  $errors['product_name'];
-                       
-                      }
-                    ?></span>
+                    <input type="text" class="form-control" id="pname" 
+                    value="<?= old('product_name')? old("product_name"): $productedit['product_name']?>" name ="product_name" placeholder="Enter Product Name">
+                    <span> <?= isset($errors['product_name']) ?
+                        $errors['product_name']:'' ?></span>
                   </div>
+
+
                   <div class="form-group">
                     <label for="pdetails">Product Details</label>
-                      <textarea id="summernote" class="form-control" name ="product_details" placeholder="Enter product details">
-                      <?php echo old('product_details');?>
+                      <textarea id="summernote" class="form-control" 
+                      name ="product_details" placeholder="Enter product details">
+                    <?= old('product_details')? old("product_details"): $productedit['product_details']?>
                         </textarea>
-                        <span class="text-danger"> <?php  
-                      if(isset($errors['product_details'])){
-                      echo  $errors['product_details'];
-                       
-                      }
-                    ?></span>
+                        <span> <?= isset($errors['product_details']) ?
+                        $errors['product_details']:'' ?></span>
                   </div>
 
                   <div class="form-group">
                     <label for="pdetails">Product Price</label>
-                    <input type="number" class="form-control" id="pdetails"  value="<?php echo set_value('product_price');?>" name="product_price" placeholder="Product Price">
-                    <?php echo set_value('product_price');?>
+                    <input type="number" class="form-control" id="pdetails"  value="<?= old('product_price')? old("product_price"): $productedit['product_price']?>" name="product_price" placeholder="Product Price">
+                    
                         </textarea>
-                        <span class="text-danger"> <?php  
-                      if(isset($errors['product_price'])){
-                      echo  $errors['product_price'];
-                       
-                      }
-                    ?></span>
+                        <span> <?= isset($errors['product_price']) ?
+                        $errors['product_price']:'' ?></span>
                   </div>
                   
                   <div class="form-check">

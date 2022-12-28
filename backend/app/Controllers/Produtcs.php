@@ -52,23 +52,58 @@ class Produtcs extends ResourceController
      */
     public function create()
     {
-       $validate = $this->validate([
-        'product_name' => 'required|min_length[5]|max_length[20]',
-        'product_details' => 'required|min_length[10]',
-        'product_price' => 'required|numeric',
-        
-       ]);
-       if(!$validate){
-        return view('products/product_enty',['validation' =>$this->validator]);
-       }
-       else{
-        // echo "yes";
-        $model = new ProdutcModel();
-        $data = $this->request->getPost();
-        $model->save($data);
-        return redirect()->to("produtcs");
-       }
-    }
+        // $validation = \Config\Services::validation();
+                $rules =  [
+                    'product_name' => 'required|min_length[5]|max_length[20]',
+                   'product_details' => 'required|min_length[10]',
+                   'product_price' => 'required|numeric',
+                        
+                ];
+           
+         $errors =  [
+
+                  'product_name' =>[
+                  'required' => 'product name must be fill',
+                 'min_length' => 'Minimum length 5',
+                 'max_length' => 'maximum length 20',
+                            
+                  ],
+                  'product_details' =>[
+                    'required' => 'product name must be fill',
+                   'min_length' => 'Minimum length 5',
+                              
+                    ],
+                    'product_price' =>[
+                        'required' => 'product name must be fill',
+                       'numeric' => 'Number Only',
+                                  
+                        ],
+
+                    ];
+      
+                    $validate = $this->validate([
+                        'product_name' => 'required|min_length[5]|max_length[20]',
+                        'product_details' => 'required|min_length[10]',
+                        'product_price' => 'required|numeric',
+                        
+                       ]);
+                       if(!$validate){
+                        return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+                       }
+                       else{
+                        // echo "yes";
+                        $model = new ProdutcModel();
+                        $data = $this->request->getPost();
+                        $model->save($data);
+                        return redirect()->to("produtcs")->with('add','Add Successfully');
+                       }
+}
+
+
+         
+
+     
+    
 
     /**
      * Return the editable properties of a resource object
@@ -77,7 +112,9 @@ class Produtcs extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        $model = new ProdutcModel();
+        $data['productedit'] = $model->find($id);
+        return view("products/product_edit",$data);
     }
 
     /**
@@ -87,7 +124,27 @@ class Produtcs extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $validate = $this->validate([
+            'product_name' => 'required|min_length[5]|max_length[20]',
+            'product_details' => 'required|min_length[10]',
+            'product_price' => 'required|numeric',
+            
+           ]);
+           if(!$validate){
+            return redirect()->back()->withInput()->with('myerrors', $this->validator->getErrors());
+           }
+
+                else{
+                    $model = new ProdutcModel();
+                    // $data = $this->request->getPost();
+                    // aivabe o kora jai
+                    $data['product_name'] = $this->request->getPost("product_name");
+                    $data['product_details'] = $this->request->getPost("product_details");
+                    $data['product_price'] = $this->request->getPost("product_price");
+                    $model->update($id,$data);
+                    return redirect()->to("produtcs")->with('msg',"Update Successfully");
+                }
+        
     }
 
     /**
@@ -100,6 +157,6 @@ class Produtcs extends ResourceController
         $productDelete = new ProdutcModel();
      $productDelete->delete($id);
         
-        return redirect()->to("Produtcs");
+        return redirect()->to("Produtcs")->with('delete',"Delete Successfully");
     }
 }
