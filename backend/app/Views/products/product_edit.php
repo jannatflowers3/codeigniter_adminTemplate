@@ -60,9 +60,24 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="<?= base_url("produtcs/update/".$productedit['id'])?>">
+              <form method="post" action="<?= base_url("produtcs/update/".$productedit['id'])?>"
+               enctype="multipart/form-data">
                 <div class="card-body">
                
+             <!-- product img -->
+             <div class="form-group">
+                    <label for="pdetails">Product Image</label>
+                    <input type="file" class="form-control" id="pdetails"  
+                    value="<?= old('product_img')?old('product_img'):$productedit['product_img']?>" 
+                        name="product_img">
+                        </textarea>
+                        <span class="text-danger"> <?php  
+                      if(isset($errors['product_img'])){
+                      echo  $errors['product_img'];    
+                      }
+                    ?></span>
+                  </div>
+
                   <div class="form-group">
                     <label for="pname">Product Name</label>
                     <input type="text" class="form-control" id="pname" 

@@ -58,7 +58,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="<?= base_url("produtcs/create")?>">
+              <form method="post" action="<?= base_url("produtcs/create")?>" enctype="multipart/form-data">
                 <div class="card-body">
                 <?php 
                 // if(isset($validation)){
@@ -75,7 +75,8 @@
 
                   <div class="form-group">
                     <label for="pname">Product Name</label>
-                    <input type="text" class="form-control" id="pname" value="<?php echo set_value('product_name');?>" name ="product_name" placeholder="Enter Product Name">
+                    <input type="text" class="form-control" id="pname" 
+                    value="<?php echo set_value('product_name');?>" name ="product_name" placeholder="Enter Product Name">
                     <span class="text-danger"> <?php  
                       if(isset($errors['product_name'])){
                       echo  $errors['product_name'];
@@ -83,6 +84,21 @@
                       }
                     ?></span>
                   </div>
+                  <!-- product categories list -->
+
+                  <div class="form-group">
+                    <label for="pname">Product Category</label>
+                    <select name ="cat_name"class="form-control" >
+                        <option value="" >Select One</option>
+                      <?php foreach($cats as $cat):?>
+                      <option value="<?= $cat['id'] ?>" > <?= $cat['category_name'] ?></option>
+                 
+                      <?php endforeach; ?>
+                    </select>
+ 
+                  </div>
+
+
                   <div class="form-group">
                     <label for="pdetails">Product Details</label>
                       <textarea id="summernote" class="form-control" name ="product_details" placeholder="Enter product details">
@@ -108,7 +124,21 @@
                       }
                     ?></span>
                   </div>
-                  
+                  <!-- product img -->
+                  <div class="form-group">
+                    <label for="pdetails">Product Image</label>
+                    <input type="file" class="form-control" id="pdetails"  
+                    value="<?php echo set_value('product_img');?>" name="product_img">
+                    <?php echo set_value('product_img');?>
+                        </textarea>
+                        <span class="text-danger"> <?php  
+                      if(isset($errors['product_img'])){
+                      echo  $errors['product_img'];
+                       
+                      }
+                    ?></span>
+                  </div>
+
                   <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>

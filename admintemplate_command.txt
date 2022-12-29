@@ -57,11 +57,33 @@ form ar hibbi helper function dorkar
         helper(['form','url']);
     }
 
+ #######  img upload  ###############
+https://www.positronx.io/codeigniter-file-upload-example-tutorial/
+
+img = varcarh null = ture = img dite o pare and na dile o hoi 
+category = 
+new kore migrate korte hobe new table name add korte hole 
+database ar all migrations golo delete korte hobe 
+
+php spark migrate
+
+seeder ar modhe product_category add korte hobe
+php spark db:seed ProductsSeeder
 
 
 
+1. php spark make:model category
+ 2. php spark make:migration categorys
+3 . php spark make:migration categorys
+ 4 .php spark migrate
 
+dummy data create korar jonno
+ 5 . php spark make:seeder Categories
+  6 . php spark db:seed
 
 php spark
  diye all command golo dekha jai 
+
+
+https://www.free-css.com/free-css-templates/page237/varsity
  

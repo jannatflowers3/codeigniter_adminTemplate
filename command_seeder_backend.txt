@@ -1,4 +1,0 @@
-  ############seeder creation ##########
- 1. php spark make:seeder products
-php spark make:seeder productsSeeder
-dammy data create kore

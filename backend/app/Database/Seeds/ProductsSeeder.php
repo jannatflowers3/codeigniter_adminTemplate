@@ -13,21 +13,25 @@ class ProductsSeeder extends Seeder
             'product_name' => 'Black',
             'product_details'    => 'Jacket Details',
             'product_price'    => '2000',
+            'product_image'    =>1,
         ],
         [
             'product_name' => 'Red Shirt',
             'product_details'    => 'Shirt Details',
             'product_price'    => '2000',
+            'product_image'    =>2,
         ],
         [
             'product_name' => 'Red Shirt',
             'product_details'    => 'Jacket Details',
             'product_price'    => '2000',
+            'product_image'    =>3,
         ],
         [
             'product_name' => 'Yellow Shirt',
             'product_details'    => 'Jacket Details',
             'product_price'    => '2000',
+            'product_image'    =>1,
         ],
     ];
         // Simple Queries

@@ -84,19 +84,29 @@
                   <thead>
                   <tr>
                     <th>Product Id</th>
+                    <th>Products Image</th>
                     <th>Product Name</th>
                     <th>Product Description</th>
                     <th>Products Price</th>
+                   
+                    <th>Products Category</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     <?php foreach($allproducts as $allproduct):?>
+                    <?php //foreach($allproducts as $index=>$allproduct):?>
                   <tr>
+                    
                     <td><?=  $allproduct['id']?></td>
+                 
+                    <td> <img src="<?=  $allproduct['product_img']?>" 
+                    width="50px" height="50px"/> </td>
                     <td><?=  $allproduct['product_name']?></td>
                     <td><?=  $allproduct['product_details']?></td>
                     <td><?=  $allproduct['product_price']?></td>
+               
+                    <td><?=  $allproduct['product_category']?></td>
                     <td>
                      <a href="<?= site_url("produtcs/edit/".$allproduct['id'])?>" class="btn btn-success" >Edit</a> 
                      <!-- <a href="produtcs/edit/<?php //echo $allproduct['id'] ?>" class="btn btn-success" >Edit</a>  -->

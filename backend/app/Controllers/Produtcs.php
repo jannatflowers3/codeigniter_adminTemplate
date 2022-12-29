@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\ProdutcModel;
+use App\Models\Category;
 class Produtcs extends ResourceController
 {
     /**
@@ -19,7 +20,7 @@ class Produtcs extends ResourceController
     public function index()
     {
         $modeldata = new ProdutcModel();
-         $data['allproducts'] = $modeldata->findAll();
+         $data['allproducts'] = $modeldata->orderBy('id','DESC')->findAll();
         //   print_r($data);
           return view('products/product_list',$data);
     
@@ -42,7 +43,13 @@ class Produtcs extends ResourceController
      */
     public function new()
     {
-        return view("products/product_enty");
+      
+        $model = new Category();
+        $data['cats'] = $model->orderBy('category_name','ASC')->findAll();
+        // return redirect()->to("produtcs");
+        // return view("products/product_edit",$data);
+        // print_r($data);
+        return view("products/product_enty",$data);
     }
 
     /**
@@ -56,8 +63,19 @@ class Produtcs extends ResourceController
                 $rules =  [
                     'product_name' => 'required|min_length[5]|max_length[20]',
                    'product_details' => 'required|min_length[10]',
-                   'product_price' => 'required|numeric',
-                        
+                   'product_price' => 'required|numeric',          
+                   'product_img' => [
+                    'uploaded[product_img]',
+                    'mime_in[product_img,image/jpg,image/jpeg,image/png]',
+                    'max_size[product_img,1024]',
+                ]
+
+                // 'product_img' => [
+                //     // 'uploaded[file]',
+                //     'mime_in[product_img,image/jpg,image/jpeg,image/png]',
+                //     'max_size[product_img,1024]',
+                // ]
+
                 ];
            
          $errors =  [
@@ -78,6 +96,13 @@ class Produtcs extends ResourceController
                        'numeric' => 'Number Only',
                                   
                         ],
+                         'product_img' =>[
+                        'mime_in' => 'Only jpg, png, jpeg are allowed',
+                        'max_size' => 'Maximum size 1025',
+                                                
+                         ],
+       
+
 
                     ];
       
@@ -92,18 +117,24 @@ class Produtcs extends ResourceController
                        }
                        else{
                         // echo "yes";
+                        $img = $this->request->getFile('product_img');
+                        // $img->move('uploads'); publilc folder upload name folder create hobe
+                       $path = "assests/".'uploads/';
+                        $img->move($path);
+                        
+                        $data['product_name'] =$this->request->getPost('product_name');
+                        $data['product_details'] =$this->request->getPost('product_details');
+                        $data['product_price']  =$this->request->getPost('product_price');
+                        $data['product_category']  =$this->request->getPost('cat_name');
+                        $namepath = $path . $img->getName();
+                        $data['product_img'] =$namepath; 
+ 
                         $model = new ProdutcModel();
-                        $data = $this->request->getPost();
                         $model->save($data);
                         return redirect()->to("produtcs")->with('add','Add Successfully');
                        }
 }
 
-
-         
-
-     
-    
 
     /**
      * Return the editable properties of a resource object
@@ -135,12 +166,24 @@ class Produtcs extends ResourceController
            }
 
                 else{
-                    $model = new ProdutcModel();
+
+                    $img = $this->request->getFile('product_img');
+                    $path = "/assests/uploads/";
+                    $img->move($path);
+
+                    $namepath = $path . $img->getName();
+                    $data['product_img'] =$namepath; 
                     // $data = $this->request->getPost();
                     // aivabe o kora jai
                     $data['product_name'] = $this->request->getPost("product_name");
                     $data['product_details'] = $this->request->getPost("product_details");
                     $data['product_price'] = $this->request->getPost("product_price");
+                    $data['category_name'] = $this->request->getPost("cat_name");
+                    // $data['product_img'] = $this->request->getPost("product_img");
+                    
+                    $model = new ProdutcModel();
+                   
+                    
                     $model->update($id,$data);
                     return redirect()->to("produtcs")->with('msg',"Update Successfully");
                 }
