@@ -87,6 +87,7 @@
               </li>
             </ul>
           </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -112,7 +113,15 @@
             </ul>
           </li>
           
-         
+          <li class="nav-item">
+            <a href="/users/logout" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Logout
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+              </li>
            
       </nav>
       <!-- /.sidebar-menu -->

@@ -67,9 +67,9 @@
              <!-- product img -->
              <div class="form-group">
                     <label for="pdetails">Product Image</label>
-                    <input type="file" class="form-control" id="pdetails"  
-                    value="<?= old('product_img')?old('product_img'):$productedit['product_img']?>" 
-                        name="product_img">
+                    <input type="file" class="form-control" id="pdetails"  name="product_img" 
+                    value="" ><img src="<?= old('product_img')?old('product_img'):$productedit['product_img']?>"/> 
+                      
                         </textarea>
                         <span class="text-danger"> <?php  
                       if(isset($errors['product_img'])){

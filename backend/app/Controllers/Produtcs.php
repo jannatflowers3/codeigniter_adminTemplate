@@ -119,7 +119,7 @@ class Produtcs extends ResourceController
                         // echo "yes";
                         $img = $this->request->getFile('product_img');
                         // $img->move('uploads'); publilc folder upload name folder create hobe
-                       $path = "assests/".'uploads/';
+                       $path = "/assests/".'uploads/';
                         $img->move($path);
                         
                         $data['product_name'] =$this->request->getPost('product_name');
@@ -168,7 +168,7 @@ class Produtcs extends ResourceController
                 else{
 
                     $img = $this->request->getFile('product_img');
-                    $path = "/assests/uploads/";
+                    $path = "/assests/".'uploads/';
                     $img->move($path);
 
                     $namepath = $path . $img->getName();
