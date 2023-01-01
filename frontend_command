@@ -1,0 +1,19 @@
+https://www.youtube.com/watch?v=KkQATIXBY5w&t=1021s  frontend template
+
+
+
+1 .  npx create-react-app frontend
+2. npm install axios
+
+
+############ backend  #############
+###############  https://mfikri.com/en/blog/react-crud-codeigniter ####
+2 . backend =>  php spark make:filter Cors
+=
+app/confiq->filters = 'cors'     => App\Filters\Cors::class, (input export)
+
+Cors.php = use CodeIgniter\HTTP\ResponseInterface;
+
+filter.php->cores = header change korte hobe
+products controller a = use CodeIgniter\API\ResponseTrait;
+import korte hobe use RESponseTrait;
