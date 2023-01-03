@@ -1,0 +1,11 @@
+id
+st_img
+st_name
+st_email
+st_phone
+st_address
+st_gender
+st_class
+st_birth
+st_password
+

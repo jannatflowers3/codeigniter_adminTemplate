@@ -1,0 +1,8 @@
+1 .  npx create-react-app frontend
+2. npm install axios
+3 . npm i router-dom
+4 . npm i react-router-dom
+boostrap instal #### 
+5 . npm install react-bootstrap bootstrap
+npm i react-owl-carousel
+<OwlCarousel items={2} className="owl-theme" loop autoplay={true}>
