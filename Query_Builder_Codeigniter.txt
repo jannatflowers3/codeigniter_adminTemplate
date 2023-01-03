@@ -1,0 +1,128 @@
+   https://www.youtube.com/watch?v=uF3N2GWJazI&list=PLEHeowSHffVBUWYi-HmH1kykqNs7Q34Yp&index=19
+
+
+
+
+
+
+
+
+$$$$$$$$ Query Builder Class #########
+
+
+1.  $db = \Config\Database::connect();
+        $builder = $db->table('produtcs');
+        echo "<pre>";
+        $raw = $builder->get();
+        $data = $raw->getResult();
+        print_r($data);
+      getResult() == select query r data result show kore 
+
+    ##### jaikono 5- 30 ta product ante chaile ###########
+
+2.      imit(3,5);  == $builder = $db->table('produtcs')->limit(3,5);
+	SELECT * FROM `produtcs` LIMIT 5, 3 (0,1,2,3no theke total 5 ta data)
+                   
+              ############# Query builder ###############
+        php spark make:controller qb;
+
+3.   2no data select korar jonno 
+         $builder = $db->table('produtcs');
+        
+        echo "<pre>";
+        $raw = $builder->getWhere(['id'=> 2]);
+
+          getWhere(['id'=>2]);
+
+4.  ############# aksathe all select data golo dekhte chaile#################
+
+$builder = $db->table('produtcs')->select('id, product_name ,product_price')->get();
+      
+         $data = $builder->getResult();
+         echo "<pre>"; 
+
+
+5. ########### MAXIMUM PRICE KOT ##########
+     $builder = $db->table('produtcs')->selectMax('product_price')->get();
+      
+         $data = $builder->getResult();
+   MYSQL QUERY == SELECT MAX(`product_price`) AS `product_price` FROM `produtcs`
+
+6.   ################# PRICE LIST AR ALL PRICE SUM KORAR JONNO ###################
+     $builder = $db->table('produtcs')->selectSum('product_price')->get();
+      $data = $builder->getResult();
+     MYSQL QUERY == SELECT SUM(`product_price`) AS `product_price` FROM `produtcs`
+
+      6.   ############## category onojay price golo total koto price hoise  ###################
+               $builder = $db->table('produtcs')->select('product_category')->selectSum('product_price')->groupBy('product_category')->get();
+      
+                $data = $builder->getResult();
+              echo "<pre>";
+            print_r($data);
+           MYSQL QUERY == 	SELECT `product_category`, SUM(`product_price`) AS `product_price` FROM `produtcs` GROUP BY `product_category`
+
+
+  7.   $$##########product tabel id product categories and categories table ar is aksathe hole 
+
+            $builder = $db->table('produtcs');
+      
+        $builder->join('categories','categories.id = produtcs.product_category');
+        $data = $builder->get()->getResult();
+        echo "<pre>";
+        print_r($data);
+
+        MYSQL QUERY =  SELECT * FROM `produtcs` JOIN `categories` ON `categories`.`id` = `produtcs`.`product_category`
+
+
+8 .   ##################  table ar sateh onno table connect where query diye ########
+         $builder = $db->table('produtcs ,categories');
+      
+         $builder->where('categories.id = produtcs.product_category');
+           $data = $builder->get()->getResult();
+           echo "<pre>";
+        print_r($data);
+
+           MYSQL QUERY ==  SELECT * FROM `produtcs`, `categories` WHERE `categories`.`id` = `produtcs`.`product_category`
+
+9.           ##################  table ar sateh onno table connect where query with multiple data diye ########
+         $builder = $db->table('produtcs ,categories');
+      
+         $builder->where('categories.id = produtcs.product_category');
+           $data = $builder->get()->getResult();
+           echo "<pre>";
+        print_r($data);
+
+           MYSQL QUERY ==  SELECT * FROM `produtcs`, `categories` WHERE `categories`.`id` = `produtcs`.`product_category`
+
+
+        10 .    
+             ############# 1 product table ar prodcut price 1000 ar besi hole########
+                 $builder = $db->table('produtcs');
+             $builder->where('product_price >1000');
+           $data = $builder->get()->getResult();
+           echo "<pre>";
+          print_r($data);
+                      MYSQL QUERY ====  SELECT * FROM `produtcs` WHERE `product_price` > 1000
+
+       11.   10 .    
+             ############# 1 product table ar prodcut price 1000 ar besi hole and multle query aksathe dite chaile ########
+               $builder = $db->table('produtcs');
+                $builder->where('product_price >1000');
+               $builder->where('product_category > 3');
+           $data = $builder->get()->getResult();
+           echo "<pre>";
+          print_r($data);
+                      MYSQL QUERY ====       SELECT * FROM `produtcs` WHERE `product_price` > 1000 AND `product_category` > 3
+
+   12.       #################### Product price 1000 thke besi and category 3 ar niche #############
+                   $builder->where('product_price >1000');
+                $builder->where('product_category < 3');
+
+               MYSQL QUERY === SELECT * FROM `produtcs` WHERE `product_price` > 1000 AND `product_category` < 3
+
+     13.       #################### Product price 1000 thke besi and 3000 theke kom and category 3 ar niche #############
+                  $builder->where('product_price >1000');
+               $builder->where('product_price < 3000');
+
+           MYSQL QUERY === SELECT * FROM `produtcs` WHERE `product_price` > 1000 AND `product_price` > 3000 AND `product_category` < 3
+      

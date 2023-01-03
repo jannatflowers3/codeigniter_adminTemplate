@@ -9,8 +9,6 @@ function App() {
         <Routes>
             <Route  path="/" element={<ProductList />}/>   
         
-         
-        
         </Routes>
      
     </BrowserRouter>
