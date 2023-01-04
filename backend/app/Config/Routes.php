@@ -41,7 +41,8 @@ $routes->get('/', 'Dashboard::index',['filter' => 'authGuard']);
 $routes->resource('Produtcs');
 $routes->get('/users/signup', 'SignupController::index');
 $routes->post('/users/store', 'SignupController::store');
-$routes->post('/Qb', 'Qb::Qb');
+$routes->post('/Qb', 'Qb::index');
+$routes->get('/wdpf_employee', 'Wepfemployee::index');
 
 $routes->get('/users/signin', 'SignController::index');
 $routes->post('/users/login', 'SignController::loginAuth');

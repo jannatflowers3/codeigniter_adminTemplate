@@ -13,9 +13,9 @@ class Qb extends BaseController
           echo "<pre>";
           $raw = $builder->get();
         $data['products'] = $raw->getResult();
-        // print_r($data);
+        print_r($data);
         return view("Test",$data);
-
+       
 
 
         // $builder = $db->table('produtcs')->limit(3,5);
