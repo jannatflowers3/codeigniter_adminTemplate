@@ -24,7 +24,7 @@ class Produtcs extends ResourceController
         $modeldata = new ProdutcModel();
          $data['allproducts'] = $modeldata->orderBy('id','DESC')->findAll();
         //   print_r($data);
-        //   return view('products/product_list',$data);
+          return view('products/product_list',$data);
         // return $this->respond($data);
     
     }

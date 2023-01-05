@@ -36,6 +36,11 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->get('/home', 'TestController::index',);
+$routes->get('/about', 'TestController::about',);
+$routes->get('/test/list', 'TestController::product_list',);
+
+$routes->get('/contact', 'TestController::contact',);
 $routes->get('/dashboard', 'Dashboard::index',['filter' => 'authGuard']);
 $routes->get('/', 'Dashboard::index',['filter' => 'authGuard']);
 $routes->resource('Produtcs');

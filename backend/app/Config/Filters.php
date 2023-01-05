@@ -8,7 +8,7 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
-use App\Filters\authGuard;
+use App\Filters\AuthGuard;
 use App\Filters\Cors;
 
 
@@ -26,7 +26,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'authGuard'     => authGuard::class,
+        'authGuard'     => AuthGuard::class,
         'cors'     => Cors::class,
        
          
@@ -41,7 +41,7 @@ class Filters extends BaseConfig
     public $globals = [
         'before' => [
             // 'honeypot',
-            // 'csrf',
+           'csrf',
             // 'invalidchars',
             'cors',
         ],
@@ -65,7 +65,10 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $methods = [];
+    public $methods = [
+        'get' => ['csrf'],
+        'post' =>['csrf',]
+    ];
 
     /**
      * List of filter aliases that should run on any

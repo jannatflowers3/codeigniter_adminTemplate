@@ -1,0 +1,35 @@
+ 1 . php spark make:controller testcontroller
+
+
+security.php=======
+     public $regenerate = true;
+
+secuirty sara form submit hobe na 
+ filter file  
+   'csrf', 
+comment out korte hobe
+
+
+filter.php ==========
+
+ 1. public $globals = [
+        'before' => [
+            // 'honeypot',
+           'csrf',
+            // 'invalidchars',
+            'cors',
+        ],
+
+
+
+
+2 . public $methods = [
+        'get' => ['csrf'],
+        'post' =>['csrf',]
+    ];
+
+3.   form ar modhe dite hobe
+<?= csrf_field(); ?>
+
+
+   https://jannatflowers3.github.io/html_hoteltemplate/
