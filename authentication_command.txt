@@ -1,8 +1,12 @@
- 1. php spark make:migration uses
-2. php spark migrate 
+ 1. php spark make:migration users
+hp spark migrate 
  3. php spark make:model usersModel
 4. php spark make:controller SignupController
 
 5 . php spark make:controller SignController
 6. php spark make:filter authGuard
 session na hole authguard a pathaibe
+
+
+studentmanagement
+/studentmanagement/new/

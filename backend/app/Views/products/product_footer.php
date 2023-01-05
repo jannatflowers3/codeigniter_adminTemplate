@@ -20,7 +20,6 @@
 
 <!-- Summernote -->
 <script src="/assests/plugins/summernote/summernote-bs4.min.js"></script>
-
 <!-- AdminLTE App -->
 <script src="/assests/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->

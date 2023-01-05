@@ -10,13 +10,16 @@ class Qb extends BaseController
     {
         $db = \Config\Database::connect();
         $builder = $db->table('produtcs');
-          echo "<pre>";
-          $raw = $builder->get();
-        $data['products'] = $raw->getResult();
-        print_r($data);
-        return view("Test",$data);
+        //   // echo "<pre>";
+        //   $raw = $builder->get();
+        // $data['products'] = $raw->getResult();
+        // // print_r($data);
+        // return view("Test",$data);
        
-
+  $builder = $db->table("produtcs")->select('product_name="black" and product_price = "2000"');
+  $row = $builder->get()->getResult();
+  echo "<pre>";
+  print_r($row);
 
         // $builder = $db->table('produtcs')->limit(3,5);
         // $builder = $db->table('produtcs');
@@ -54,12 +57,12 @@ class Qb extends BaseController
       
 
 ###1 product table ar prodcut price 1000 ar besi hole########
-$builder = $db->table('produtcs');     
-$builder->where('product_price >1000');
-$builder->where('product_price < 3000');
-$builder->where('product_category < 3');
-$data = $builder->get()->getResult();
-echo "<pre>";
-print_r($data);
+// $builder = $db->table('produtcs');     
+// $builder->where('product_price >1000');
+// $builder->where('product_price < 3000');
+// $builder->where('product_category < 3');
+// $data = $builder->get()->getResult();
+// echo "<pre>";
+// print_r($data);
     }
 }

@@ -104,8 +104,7 @@
                     width="50px" height="50px"/> </td>
                     <td><?=  $allproduct['product_name']?></td>
                     <td><?=  $allproduct['product_details']?></td>
-                    <td><?=  $allproduct['product_price']?></td>
-               
+                    <td><?=  $allproduct['product_price']?></td>  
                     <td><?=  $allproduct['product_category']?></td>
                     <td>
                      <a href="<?= site_url("produtcs/edit/".$allproduct['id'])?>" class="btn btn-success" >Edit</a> 
