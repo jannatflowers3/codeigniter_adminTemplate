@@ -106,23 +106,8 @@
                   <?php endforeach;?>
                   </tfoot>
                 </table>
-                <div class="pagination">
-                    <?php if($pager):?>
-                        <?php $pagi_path = 'index.php/users';?>
-                        <?php $pager->setPath($pagi_path);?>
-                        <?= $pager->links() ?>
-                        <?php endif?>
-                </div>
-                <nav>
-                    <ul class="pagination">
-                        <?php  if($pager);?>
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                           <?php ?>
-
-
-                    </nav>
+              
+                    <?php echo $pager->links('group1', 'bs_full'); ?>
               </div>
               <!-- /.card-body -->
             </div>

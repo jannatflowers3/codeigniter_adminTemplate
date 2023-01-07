@@ -62,6 +62,7 @@
               <!-- form start -->
               <form method="post" action="<?= base_url("produtcs/update/".$productedit['id'])?>"
                enctype="multipart/form-data">
+               <?= csrf_field(); ?>
                 <div class="card-body">
                
              <!-- product img -->

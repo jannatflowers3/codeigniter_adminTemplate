@@ -122,7 +122,7 @@ class Produtcs extends ResourceController
                         // echo "yes";
                         $img = $this->request->getFile('product_img');
                         // $img->move('uploads'); publilc folder upload name folder create hobe
-                       $path = "/assests/".'uploads/';
+                       $path = "assests/".'uploads/';
                         $img->move($path);
                         
                         $data['product_name'] =$this->request->getPost('product_name');
@@ -171,7 +171,7 @@ class Produtcs extends ResourceController
                 else{
 
                     $img = $this->request->getFile('product_img');
-                    $path = "/assests/".'uploads/';
+                    $path = "assests/".'uploads/';
                     $img->move($path);
 
                     $namepath = $path . $img->getName();
@@ -203,6 +203,20 @@ class Produtcs extends ResourceController
         $productDelete = new ProdutcModel();
      $productDelete->delete($id);
         
-        return redirect()->to("Produtcs")->with('delete',"Delete Successfully");
+        return redirect()->to("produtcs")->with('delete',"Delete Successfully");
     }
+
+
+    // public function paginiation()
+    // {
+    //   $pager = \Config\Services::pager();
+    //   $model = new ProdutcModel();
+  
+    //   $data = [
+    //     'products' => $model->paginate(3, 'group2'),
+    //     'pager' => $model->pager,
+    //   ];
+    //   return view('pages/list',$data);
+    //   // return view('pages/products_page', $data);
+    // }
 }

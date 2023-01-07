@@ -1,0 +1,22 @@
+1.pages folder list.php = <?php echo $pager->links('group1', 'bs_full'); ?>
+2. app/confifq/pager.php =view page ar folder decler korte hobe    'bs_full'        => 'App\Views\Pagers\bs_full',
+3.view/pages/bs_full.php  add all data
+4. 
+
+############  alertify
+
+ ########### mmulti auth routing
+1.  composer create-project codeigniter4/appstarter codeigniter-4
+
+########command line a kaj korar jonono env file kaj korbe 
+ ######## server a env file lagbe na ..localhost a php spark serve ar jonno command ar jonno env file dorkal
+3.   .env korte hobe
+   CI_ENVIRONMENT = development
+ env te database connect korte hobe
+model->userModel a allowedField a filed dite hobe
+userSeeder a 	$user_object->insertBatch ar madhome automatic data lop onojai chole jabe
+
+BestController.ph = protected $helpers = ['url'];
+https://onlinewebtutorblog.com/codeigniter-4-multi-auth-user-role-wise-login/
+
+https://github.com/naymur92/wdpf51_CodeIgniter/blob/main/fullstack_project_1/backend/app/Views/pages/products_page.php

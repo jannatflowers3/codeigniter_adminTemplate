@@ -18,7 +18,22 @@
  </aside>
 
  <!-- Content Wrapper. Contains page content -->
+ <?php if (session()->has('msg')) : ?>
+<script>
+function tempAlert(msg, duration) {
+var el = document.createElement("div");
+el.setAttribute('class', 'alert alert-success text-white');
+el.setAttribute("style", "position:absolute;top:20%;left:50%;");
+el.innerHTML = msg;
+setTimeout(function() {
+el.parentNode.removeChild(el);
+}, duration);
+document.body.appendChild(el);
+}
 
+tempAlert('<?= session()->msg; ?>', 5000);
+</script>
+<?php endif; ?>
 
  <div class="content-wrapper">
    <!-- Content Header (Page header) -->
@@ -44,7 +59,7 @@
              $error = [];
                 if(session()->has('add')):?>
                    <div class="alert alert-success"><?= session()->add;?></div>
-                 
+                
           <?php endif ?>
          </div><!-- /.col -->
          <div class="col-sm-6">
@@ -109,8 +124,15 @@
                     <td>
                      <a href="<?= site_url("produtcs/edit/".$allproduct['id'])?>" class="btn btn-success" >Edit</a> 
                      <!-- <a href="produtcs/edit/<?php //echo $allproduct['id'] ?>" class="btn btn-success" >Edit</a>  -->
-                     <a href="produtcs/delete/<?php echo $allproduct['id'] ?>" class="btn btn-primary" >Delete</a> </td>
+                     <!-- <a href="produtcs/delete/<?php// echo $allproduct['id'] ?>" class="btn btn-primary" >Delete</a> </td> -->
                    
+                     <form action="<?= site_url("produtcs/delete/" . $allproduct['id']) ?>" method="post">
+                                       <?= csrf_field() ?>
+                                       <button class="btn btn-danger" onclick="return confirm('Are You Sure?')" type="submit">
+                                          <!-- <i class="fa fa-trash"></i> -->Delete
+                                          <?=csrf_field() ?>
+                                       </button>
+                                    </form>
                   </tr>
                   <?php endforeach;?>
                   </tbody>
@@ -125,6 +147,7 @@
                   </tfoot>
                 </table>
               </div>
+              <!-- <?php// echo $pager->links('group2', 'bs_full2'); ?> -->
               <!-- /.card-body -->
             </div>
       </div>

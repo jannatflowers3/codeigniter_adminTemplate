@@ -25,6 +25,10 @@
   <link rel="stylesheet" href="assests/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  
+<!--alertify CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

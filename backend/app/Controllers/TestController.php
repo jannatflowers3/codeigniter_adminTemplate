@@ -16,15 +16,29 @@ class TestController extends BaseController
     public function contact(){
         return view('pages/contactus');
     }
-    public function product_list(){
-        $model = new ProdutcModel();
-        $data = [
-            'products' => $model->paginate(10),
-            'pager' => $model->pager,
-        ];
-        return view('pages/list',$data);
-    }
-   
+    // public function product_list(){
+    //     $model = new ProdutcModel();
+    //     $data = [
+    //         'products' => $model->paginate(10),
+    //         'pager' => $model->pager,
+    //     ];
+    //     return view('pages/list',$data);
+    // }
+
+    public function product_list()
+  {
+    $pager = \Config\Services::pager();
+    $model = new ProdutcModel();
+
+    $data = [
+      'products' => $model->paginate(3, 'group1'),
+      'pager' => $model->pager,
+    ];
+    return view('pages/list',$data);
+    // return view('pages/products_page', $data);
+  }
+
+//  
     // $parser = new \CodeIgniter\View\Parser();
 
 }

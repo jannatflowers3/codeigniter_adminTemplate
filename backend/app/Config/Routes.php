@@ -26,7 +26,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -43,7 +43,11 @@ $routes->get('/test/list', 'TestController::product_list',);
 $routes->get('/contact', 'TestController::contact',);
 $routes->get('/dashboard', 'Dashboard::index',['filter' => 'authGuard']);
 $routes->get('/', 'Dashboard::index',['filter' => 'authGuard']);
-$routes->resource('Produtcs');
+
+// $routes->resource('Produtcs');
+// authGuard security ar joonno otumatically product page a na jawar jonno
+$routes->presenter('produtcs',['filter' => 'authGuard']);
+
 $routes->get('/users/signup', 'SignupController::index');
 $routes->post('/users/store', 'SignupController::store');
 $routes->post('/Qb', 'Qb::index');

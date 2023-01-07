@@ -42,5 +42,9 @@
 <script src="assests/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="assests/dist/js/pages/dashboard.js"></script>
+
+<!-- alertify JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
 </body>
 </html>
