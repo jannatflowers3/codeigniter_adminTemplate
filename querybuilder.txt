@@ -1,0 +1,149 @@
+Query Builder
+####From employees table
+1. firstName, lastName, email those jobTitle are sales Rep
+2. firstName, lastName, email those jobTitle are sales Rep and reportsTo 1143
+3.  
+#### From employees and offices table
+firstName, lastName, email, city, country those are from USA
+4.  
+#### From orders, customers
+customerName, phone, city, orderNumber, orderDate, status
+5.  
+#### From orders, orderdetails and customers
+customerName, phone, city, orderNumber, orderDate, status, quantityOrdered, priceEach
+6.  
+#### From orders, orderdetails, customers, products
+SELECT customerName, city, orders.orderNumber, orderDate, products.productCode, productName, sum(quantityOrdered), sum(priceEach), MSRP
+from orders, orderdetails, customers, products where
+orders.orderNumber = orderdetails.orderNumber AND
+products.productCode = orderdetails.productCode AND
+orders.customerNumber =  customers.customerNumber
+GROUP BY orders.orderNumber
+
+
+7. Country wise order success summary
+8. Customer wise order success summary
+9. Sales reprensentative wise order success report
+10. Order success rate city wise
+11. Monthy order numbers
+
+All Query Builder Codes
+
+
+
+
+
+public function query()
+  {
+    $db_con = \Config\Database::connect('query_builder');
+
+    // // 1
+    // $builder = $db_con->table('employees');
+    // $builder->select('firstName, lastName, email');
+    // $builder->where("jobTitle = 'Sales Rep'");
+
+
+    // // 2
+    // $builder = $db_con->table('employees');
+    // $builder->select('firstName, lastName, email');
+    // $builder->where("jobTitle = 'Sales Rep'");
+    // $builder->where("reportsTo = 1143");
+
+    // // Another Process
+    // $subquery = $db_con->table('employees')->select('firstName')->where('employeeNumber = 1143');
+    // $builder = $db_con->table('employees');
+    // $builder->select('firstName, lastName, email');
+    // $builder->where("jobTitle = 'Sales Rep'");
+    // $builder->where("reportsTo = 1143");
+    // $builder->selectSubquery($subquery, 'ReportsTo');
+
+
+    // // 3
+    // $builder = $db_con->table('employees, offices');
+    // $builder->select('firstName, lastName, email, city, country');
+    // $builder->where('employees.officeCode = offices.officeCode');
+    // $builder->where("offices.country = 'USA'");
+
+
+    // // 4
+    // $builder = $db_con->table('orders, customers');
+    // $builder->select('customerName, phone, city, orderNumber, orderDate, status');
+    // $builder->where('orders.customerNumber = customers.customerNumber');
+
+    // // Another Process
+    // $builder = $db_con->table('orders');
+    // $builder->select('customerName, phone, city, orderNumber, orderDate, status');
+    // $builder->join('customers', 'orders.customerNumber = customers.customerNumber');
+
+
+    // // 5
+    // $builder = $db_con->table('orders, customers, orderdetails');
+    // $builder->select('orders.orderNumber, customerName, phone, city, orderDate, status,');
+    // $builder->where('orders.customerNumber = customers.customerNumber');
+    // $builder->selectSum('orderdetails.priceEach', 'Total Price');
+    // $builder->selectSum('orderdetails.quantityOrdered', 'Total Quantity')->groupBy('orderNumber');
+    // $builder->where('orders.orderNumber = orderdetails.orderNumber');
+
+
+    // // 6
+    // $builder = $db_con->table('orders, orderdetails, customers');
+    // $builder->select('customerName, city, orders.orderNumber, orderDate');
+    // $builder->selectSum('orderdetails.priceEach', 'Total Price');
+    // $builder->selectSum('orderdetails.quantityOrdered', 'Total Quantity');
+    // $builder->where('orders.orderNumber = orderdetails.orderNumber');
+    // $builder->where('orders.customerNumber = customers.customerNumber');
+    // $builder->groupBy('orders.orderNumber');
+
+
+    // // 7
+    // $builder = $db_con->table('orders, customers');
+    // $builder->select('customers.country');
+    // $builder->selectCount('orders.orderNumber', 'Total Orders');
+    // $builder->where('orders.customerNumber = customers.customerNumber');
+    // $builder->where('orders.status = "Shipped"');
+    // $builder->groupBy('customers.country');
+
+
+    // // 8
+    // $builder = $db_con->table('orders, customers');
+    // $builder->select('customers.customerName');
+    // $builder->selectCount('orders.orderNumber', 'Total Orders');
+    // $builder->where('orders.status = "Shipped"');
+    // $builder->where('orders.customerNumber = customers.customerNumber');
+    // $builder->groupBy('customers.customerName');
+
+
+    // // 9
+    // $builder = $db_con->table('employees, customers, orders');
+    // $builder->select('CONCAT(employees.firstName, " ", employees.lastName) AS "Employee Name"');
+    // $builder->selectCount('orders.orderNumber', 'Total Sales');
+    // $builder->where('orders.status = "Shipped"');
+    // $builder->where('orders.customerNumber = customers.customerNumber');
+    // $builder->where('customers.salesRepEmployeeNumber = employees.employeeNumber');
+    // $builder->groupBy('employees.employeeNumber');
+    // $builder->orderBy('employees.firstName');
+
+
+    // // 10
+    // $builder = $db_con->table('customers, orders');
+    // $builder->select('customers.city');
+    // $builder->selectCount('orders.orderNumber', 'Total Orders');
+    // $builder->where('orders.status = "Shipped"');
+    // $builder->where('orders.customerNumber = customers.customerNumber');
+    // $builder->groupBy('customers.city');
+
+
+    // 11
+    $builder = $db_con->table('orders');
+    $builder->select('CONCAT(year(orderDate), "-", month(orderDate)) as "Selected Month"');
+    $builder->selectCount('orderNumber', "Total Orders");
+    $builder->groupBy('year(orderDate), month(orderDate)');
+
+
+    $raw = $builder->get();
+    $data = $raw->getResultArray();
+
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+  }
