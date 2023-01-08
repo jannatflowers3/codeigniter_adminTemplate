@@ -24,6 +24,9 @@
 <script src="/assests/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/assests/dist/js/demo.js"></script>
+<script src="/assests/myscript.js"></script>
+
+
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -48,5 +51,7 @@
     $('#summernote').summernote()
   })
 </script>
+
+
 </body>
 </html>

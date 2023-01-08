@@ -49,7 +49,7 @@ class Database extends Config
         'failover' => [],
         'port'     => 3306,
     ];
-    public $result = [
+    public $sampledb = [
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',

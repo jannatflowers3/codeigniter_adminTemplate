@@ -38,7 +38,12 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/home', 'TestController::index',);
 $routes->get('/about', 'TestController::about',);
-$routes->get('/test/list', 'TestController::product_list',);
+$routes->get('/test/list', 'TestController::product_list');
+
+$routes->get('/reports/stafflist', 'ReportController::stafflist',['filter' => 'authGuard']);
+$routes->get('/reports/allstaff', 'ReportController::allstaff',['filter' => 'authGuard']);
+$routes->get('/reports/orderlist', 'ReportController::orderlist',['filter' => 'authGuard']);
+$routes->get('/reports/allorder', 'ReportController::allorder',['filter' => 'authGuard']);
 
 $routes->get('/contact', 'TestController::contact',);
 $routes->get('/dashboard', 'Dashboard::index',['filter' => 'authGuard']);
@@ -47,7 +52,7 @@ $routes->get('/', 'Dashboard::index',['filter' => 'authGuard']);
 // $routes->resource('Produtcs');
 // authGuard security ar joonno otumatically product page a na jawar jonno
 $routes->presenter('produtcs',['filter' => 'authGuard']);
-
+// presenter dile method edit delete hobe na
 $routes->get('/users/signup', 'SignupController::index');
 $routes->post('/users/store', 'SignupController::store');
 $routes->post('/Qb', 'Qb::index');
